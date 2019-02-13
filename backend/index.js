@@ -1,8 +1,11 @@
-const express = require('express');
-const app = express();
+const app = require('express')();
+const bodyParser = require('body-parser');
 const port = +process.argv.slice(2)[0] ||  process.env.PORT || 3001;
-console.log(process.argv);
 
-app.get('/',console.log);
+
+app.use(bodyParser.json());
+
+app.use('/', require('./routes/team.js'));
+app.use('/', require('./routes/user.js'));
 
 app.listen(port, () => console.log(`Servidor escuchando en el puerto ${port}`))
