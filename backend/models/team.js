@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
-
-const RoleSchema = mongoose.Schema({
+const { UserSchema } = require('./user');
+const TeamSchema = mongoose.Schema({
     name: {
         type: String,
         required: true,
-        minlength: 2,
+        minlength: 3,
         maxlength: 15,
         trim: true,
         unique: true,
@@ -14,12 +14,12 @@ const RoleSchema = mongoose.Schema({
             message: '{VALUE} is not valid'
         }
     },
-    isDemium: {
-        type: Boolean,
+    cityId: {
+        type: String,
         required: true
-    }
+    },
+    users: [UserSchema]
 }, { strict: true });
 
-const RoleModel = mongoose.model('role', RoleSchema);
 
-module.exports = RoleModel;
+module.exports = mongoose.model('team', TeamSchema);
