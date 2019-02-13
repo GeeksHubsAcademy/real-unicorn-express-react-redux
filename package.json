@@ -1,0 +1,17 @@
+{
+  "name": "demium-real-unicorn",
+  "version": "1.0.0",
+  "description": "frontend and backend respository",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "express",
+    "react",
+    "redux",
+    "nodejs"
+  ],
+  "author": "jupegarnica",
+  "license": "ISC"
+}
