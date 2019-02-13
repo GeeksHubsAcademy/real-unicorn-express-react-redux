@@ -13,5 +13,6 @@
     "nodejs"
   ],
   "author": "jupegarnica",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {}
 }
