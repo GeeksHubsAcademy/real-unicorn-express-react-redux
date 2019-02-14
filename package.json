@@ -4,7 +4,10 @@
   "description": "frontend and backend respository",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "frontend": "cd frontend && npm start",
+    "backend": "cd backend && npm start",
+    "start": "concurrently \"npm run backend\" \"npm run frontend\""
   },
   "keywords": [
     "express",
@@ -14,5 +17,7 @@
   ],
   "author": "jupegarnica",
   "license": "ISC",
-  "dependencies": {}
+  "dependencies": {
+    "concurrently": "^4.1.0"
+  }
 }
