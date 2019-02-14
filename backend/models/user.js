@@ -39,6 +39,19 @@ const UserSchema = mongoose.Schema({
             message: '{VALUE} is not valid'
         }
     },
+    email: {
+        type: String,
+        required: true,
+        minlength: 4,
+        maxlength: 50,
+        trim: true,
+        unique: true,
+        validate: {
+            isAsync: true,
+            validator: () => true,
+            message: '{VALUE} is not valid'
+        }
+    },
     password: {
         type: String,
         required: true,

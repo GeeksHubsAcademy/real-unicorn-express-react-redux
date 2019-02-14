@@ -11,4 +11,6 @@ app.use('/user', require('./routes/user'));
 app.use('/role', require('./routes/role'));
 app.use('/city', require('./routes/city'));
 
+app.use('/login', require('./routes/login'));
+
 app.listen(port, () => console.log(`Servidor escuchando en el puerto ${port}`))

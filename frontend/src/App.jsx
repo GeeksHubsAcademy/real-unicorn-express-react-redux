@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import './App.scss';
 import { BrowserRouter, Route, Link, Switch , Redirect} from 'react-router-dom';
 import Register from './register.jsx';
+import Login from './login.jsx';
+
 const App = props => {
   return (
     <BrowserRouter>
@@ -21,7 +23,7 @@ const App = props => {
             <Route exact path='/users' component={() => 'users'} />
             <Route exact path='/ideas' component={() => 'ideas'} />
             <Route exact path='/cities' component={() => 'cities'} />
-            <Route exact path='/login' component={() => 'login'} />
+            <Route exact path='/login' component={Login} />
             <Route exact path='/register' component={Register} />
             <Redirect exact path='*' to='/' />
           </Switch>
