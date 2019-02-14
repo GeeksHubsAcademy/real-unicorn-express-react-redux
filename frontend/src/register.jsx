@@ -1,21 +1,54 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import './register.scss';
 export default props => {
     const [roles, setRoles] = useState([]);
-    axios.get('http://localhost:3001/role')
-        .then(result => setRoles(result.data))
-    return (
-        <form className="register">
-            <input type="text"  name="name" placeholder="name" />
-            <input type="text"  name="surname" placeholder="surname" />
-            <input type="text"  name="email" placeholder="email" />
-            <input type="text"  name="telephone" placeholder="telephone" />
-            <select name="role" id="">
-               {
-                    roles.map(role => <option key={role._id} value={role._id}>{role.name}</option>)
-               }
-            </select>
-        </form>
-    )
-}
+    const [error, setError] = useState(null);
+
+  const submit = e => {
+    e.preventDefault();
+    const [nameNode, surnameNode, emailNode, telephoneNode, passwordNode, pass2Node, roleNode] = e.target.querySelectorAll('[name]');
+
+    const [name, surname, email, telephone, password, pass2, role] =
+
+    [nameNode.value, surnameNode.value, emailNode.value, telephoneNode.value, passwordNode.value, pass2Node.value, roleNode.value];
+    if (pass2 === password) {
+      const body = {
+        name,
+        surname,
+        email,
+        telephone,
+        password,
+        role,
+      };
+      axios
+        .post('http://localhost:3001/user', body)
+        .then(console.log)
+        .catch(err => setError('try again'));
+    } else {
+        setError('passwords don\'t match')
+    }
+  };
+
+
+  axios.get('http://localhost:3001/role').then(result => setRoles(result.data));
+  return (
+    <form className='register' onSubmit={submit}>
+      <input type='text' required name='name' placeholder='name' />
+      <input type='text' required name='surname' placeholder='surname' />
+      <input type='email' required name='email' placeholder='email' />
+      <input type='tel' required name='telephone' placeholder='telephone' />
+      <input type='password' required name='password' placeholder='password' />
+      <input type='password' required name='password2' placeholder='confirm password' />
+      <select name='role' id=''>
+        {roles.map(role => (
+          <option key={role._id} value={role._id}>
+            {role.name}
+          </option>
+        ))}
+      </select>
+      {error && <h4>{error}</h4>}
+      <input type='submit' value='Registrarme' />
+    </form>
+  );
+};
