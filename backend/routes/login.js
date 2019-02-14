@@ -11,7 +11,10 @@ router.post('/', (req, res) => {
     })
     .then(users => {
         if (users.length === 1) {
-            res.json({response: 'logged correct', token:'asdhjdsa123qsd'});
+            users[0].generateAuthToken().then(token => {
+
+                res.json({ token: token });
+            });
 
         } else {
             res.status(401).json({ response: 'logged incorrect' });
