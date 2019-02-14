@@ -4,6 +4,7 @@ import './App.scss';
 import { BrowserRouter, Route, Link, Switch , Redirect} from 'react-router-dom';
 import Register from './register.jsx';
 import Login from './login.jsx';
+import Users from './users.jsx';
 
 const App = props => {
   return (
@@ -14,13 +15,14 @@ const App = props => {
           <Link to='/users'>users</Link>
           <Link to='/ideas'>ideas</Link>
           <Link to='/cities'>cities</Link>
+          <Link to='/login'>login</Link>
         </nav>
         <section>
           <Switch>
 
             <Redirect exact path='/' to='/login'/>
             <Route exact path='/teams' component={() => 'teams'} />
-            <Route exact path='/users' component={() => 'users'} />
+            <Route exact path='/users' component={Users} />
             <Route exact path='/ideas' component={() => 'ideas'} />
             <Route exact path='/cities' component={() => 'cities'} />
             <Route exact path='/login' component={Login} />
