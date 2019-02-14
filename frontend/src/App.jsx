@@ -1,14 +1,33 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import './App.css';
-
+import './App.scss';
+import { BrowserRouter, Route, Link, Switch , Redirect} from 'react-router-dom';
+import Register from './register.jsx';
 const App = props => {
   return (
-    <section className='App'>
-      <button onClick={() => props.inc()}>+</button>
-      {props.num}
-      <button onClick={() => props.dec()}>-</button>
-    </section>
+    <BrowserRouter>
+      <div className="app">
+        <nav>
+          <Link to='/teams'>teams</Link>
+          <Link to='/users'>users</Link>
+          <Link to='/ideas'>ideas</Link>
+          <Link to='/cities'>cities</Link>
+        </nav>
+        <section>
+          <Switch>
+
+            <Redirect exact path='/' to='/login'/>
+            <Route exact path='/teams' component={() => 'teams'} />
+            <Route exact path='/users' component={() => 'users'} />
+            <Route exact path='/ideas' component={() => 'ideas'} />
+            <Route exact path='/cities' component={() => 'cities'} />
+            <Route exact path='/login' component={() => 'login'} />
+            <Route exact path='/register' component={Register} />
+            <Redirect exact path='*' to='/' />
+          </Switch>
+        </section>
+      </div>
+    </BrowserRouter>
   );
 };
 
