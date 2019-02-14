@@ -9,7 +9,7 @@ export default props => {
     e.preventDefault();
     const [nameNode, surnameNode, emailNode, telephoneNode, passwordNode, pass2Node, roleNode] = e.target.querySelectorAll('[name]');
 
-    const [name, surname, email, telephone, password, pass2, role] =
+    const [name, surname, email, telephone, password, pass2, roleId] =
 
     [nameNode.value, surnameNode.value, emailNode.value, telephoneNode.value, passwordNode.value, pass2Node.value, roleNode.value];
     if (pass2 === password) {
@@ -19,12 +19,15 @@ export default props => {
         email,
         telephone,
         password,
-        role,
+        roleId,
       };
       axios
         .post('http://localhost:3001/user', body)
-        .then(console.log)
-        .catch(err => setError('try again'));
+        .then( () => {
+            props.history.push('/login');
+
+        })
+          .catch(err => { console.log(err); setError('try again')});
     } else {
         setError('passwords don\'t match')
     }

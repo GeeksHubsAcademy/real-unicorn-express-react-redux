@@ -17,7 +17,7 @@ const UserSchema = mongoose.Schema({
         type: String,
         required: true,
         minlength: 3,
-        maxlength: 15,
+        maxlength: 25,
         trim: true,
         unique: false,
         validate: {
@@ -33,6 +33,19 @@ const UserSchema = mongoose.Schema({
         maxlength: 15,
         trim: true,
         unique: true,
+        validate: {
+            isAsync: true,
+            validator: () => true,
+            message: '{VALUE} is not valid'
+        }
+    },
+    password: {
+        type: String,
+        required: true,
+        minlength: 4,
+        maxlength: 50,
+        trim: false,
+        unique: false,
         validate: {
             isAsync: true,
             validator: () => true,
