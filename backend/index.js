@@ -2,7 +2,8 @@ const app = require('express')();
 const bodyParser = require('body-parser');
 const port = +process.argv.slice(2)[0] ||  process.env.PORT || 3001;
 require('./config/mongoose');
-
+const cors = require('cors');
+app.use(cors());
 app.use(bodyParser.json());
 
 app.use('/team', require('./routes/team'));
