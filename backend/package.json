@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "mongod:start":"sudo systemctl start mongodb",
+    "mongod:status":"sudo systemctl status mongodb"
   },
   "author": "",
   "license": "ISC",
