@@ -1,7 +1,10 @@
 const router = require('express').Router();
 const { UserModel } = require('../models/user');
+const jwtAuthorization = require('../middleware/jwtAuthorization');
 
-router.get('/', (req, res) => res.json({ code: 200, response: 'get user' }));
+
+router.get('/', jwtAuthorization , (req, res) => res.json({ code: 200, response: 'get user', headers: req.headers }));
+
 router.post('/', (req, res) => {
   new UserModel({ ...req.body })
     .save()
