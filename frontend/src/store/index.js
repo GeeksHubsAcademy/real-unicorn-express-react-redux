@@ -5,8 +5,10 @@ const middleware = compose(persistState(/*paths, config*/));
 
 const defaultState = {
   token: null,
+  users: [],
 };
 const reducer = (state, action) => {
+  console.log(action.type)
   switch (action.type) {
     case 'LOGGED':
       return {

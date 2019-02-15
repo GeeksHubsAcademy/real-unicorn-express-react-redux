@@ -17,7 +17,7 @@ const Users = props => {
             <div className='surname'>{surname}</div>
             <div className='telephone'>{telephone}</div>
             <div className='email'>{email}</div>
-            <div className='role'>{role.name}</div>
+            <div className='role'>{role && role.name}</div>
           </div>
         ))}
       </section>

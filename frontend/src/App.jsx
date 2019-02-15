@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Link, Switch , Redirect} from 'react-router-dom';
 import Register from './register.jsx';
 import Login from './login.jsx';
 import Users from './users.jsx';
+import Teams from './teams.jsx';
 
 const App = props => {
   return (
@@ -21,7 +22,7 @@ const App = props => {
           <Switch>
 
             <Redirect exact path='/' to='/login'/>
-            <Route exact path='/teams' component={() => 'teams'} />
+            <Route exact path='/teams' component={Teams} />
             <Route exact path='/users' component={Users} />
             <Route exact path='/ideas' component={() => 'ideas'} />
             <Route exact path='/cities' component={() => 'cities'} />
