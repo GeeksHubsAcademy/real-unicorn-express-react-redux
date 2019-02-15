@@ -17,6 +17,8 @@ const Login = props => {
             .then(({ data }) => {
                 console.log('logged!');
                 props.logged(data.token);
+                console.log(data.token);
+
                 props.history.push('/users');
             })
             .catch(

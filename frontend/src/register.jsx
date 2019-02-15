@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import './register.scss';
+import api from './services/api.service';
 export default props => {
     const [roles, setRoles] = useState([]);
     const [error, setError] = useState(null);
@@ -21,8 +21,7 @@ export default props => {
         password,
         roleId,
       };
-      axios
-        .post('http://localhost:3001/user', body)
+      api.register(body)
         .then( () => {
             props.history.push('/login');
 
@@ -35,7 +34,7 @@ export default props => {
 
   useEffect(() => {
     console.log('useEffect cb running')
-    axios.get('http://localhost:3001/role').then(result => setRoles(result.data));
+    api.getRoles().then(result => setRoles(result.data));
   },[])
 
   console.log('rendenring');

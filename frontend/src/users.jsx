@@ -1,17 +1,19 @@
 import React, {useEffect} from 'react';
 import { connect } from 'react-redux';
 import { Redirect} from 'react-router-dom';
-import axios from 'axios';
+import api from './services/api.service';
 const Users = props => {
 
-  useEffect(()=>{
-    axios.get('http://localhost:3001/users')
-  }, [])
+
 
   if (!props.token) {
     return <Redirect to='/login' />;
+  } else {
+    useEffect(() => {
+      api.getUsers().then(console.log).catch(console.error)
+    }, [])
+    return <h1>users</h1>;
   }
-  return <h1>users</h1>;
 };
 
 export default connect(
