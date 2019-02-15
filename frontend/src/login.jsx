@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import './login.scss';
 import { connect } from 'react-redux';
 import {Redirect} from 'react-router-dom';
+import api from './services/api.service';
 const Login = props => {
     const [error, setError] = useState(null);
     const submit = e => {
@@ -13,9 +13,7 @@ const Login = props => {
             email,
             password,
         };
-        console.log(body);
-
-        axios.post('http://localhost:3001/login', body)
+        api.login(body)
             .then(({ data }) => {
                 console.log('logged!');
                 props.logged(data.token);
@@ -29,8 +27,6 @@ const Login = props => {
                 }
             );
     };
-    console.log(props.isLogged);
-
     if(props.isLogged) {
 
         return <Redirect to="/users"/>
