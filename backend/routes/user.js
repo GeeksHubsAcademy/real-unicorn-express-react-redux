@@ -3,7 +3,16 @@ const { UserModel } = require('../models/user');
 const jwtAuthorization = require('../middleware/jwtAuthorization');
 
 
-router.get('/', jwtAuthorization , (req, res) => res.json({ code: 200, response: 'get user', headers: req.headers }));
+router.get('/', jwtAuthorization , (req, res) => {
+
+        UserModel.find({})
+          .then(users => {
+            const usersWithoutTokens = users.map(user => ({...user._doc, tokens: undefined, password:undefined}))
+            res.json(usersWithoutTokens)
+          })
+          .catch(err => res.status(500).json(err))
+
+});
 
 router.post('/', (req, res) => {
   new UserModel({ ...req.body })
