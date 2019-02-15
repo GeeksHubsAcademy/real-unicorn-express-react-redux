@@ -17,7 +17,7 @@ const App = props => {
           <Link to='/cities'>cities</Link>
           <Link to='/login'>login</Link>
         </nav>
-        <section>
+        <section className="main">
           <Switch>
 
             <Redirect exact path='/' to='/login'/>

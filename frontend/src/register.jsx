@@ -33,11 +33,9 @@ export default props => {
   };
 
   useEffect(() => {
-    console.log('useEffect cb running')
     api.getRoles().then(result => setRoles(result.data));
   },[])
 
-  console.log('rendenring');
   return (
     <form className='register' onSubmit={submit}>
       <input type='text' required name='name' placeholder='name' />

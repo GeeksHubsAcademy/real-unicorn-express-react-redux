@@ -1,0 +1,15 @@
+.users {
+    background: grey;
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 3em;
+    grid-gap: 1em;
+
+    .user {
+        background: white;
+        padding: 1em;
+
+
+    }
+
+}

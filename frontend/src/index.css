@@ -12,3 +12,20 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.app .main {
+  flex:1;
+  display: flex;
+  flex-direction:column;
+}
+
+
+.app .main > * {
+  height: 100%;;
+  flex:1;
+}

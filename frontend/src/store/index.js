@@ -1,8 +1,14 @@
-import { createStore } from 'redux';
+import { createStore, compose } from 'redux';
+import persistState from 'redux-localstorage'
+
+const middleware = compose(
+  persistState(/*paths, config*/),
+)
+
 const defaultState = {
   token: null,
 };
-const reducer = (state = defaultState, action) => {
+const reducer = (state , action) => {
   switch (action.type) {
     case 'LOGGED':
       return {
@@ -19,4 +25,4 @@ const reducer = (state = defaultState, action) => {
   }
 };
 
-export default createStore(reducer);
+export default createStore(reducer, defaultState, middleware);
