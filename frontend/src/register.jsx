@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './register.scss';
 export default props => {
@@ -33,8 +33,12 @@ export default props => {
     }
   };
 
+  useEffect(() => {
+    console.log('useEffect cb running')
+    axios.get('http://localhost:3001/role').then(result => setRoles(result.data));
+  },[])
 
-  axios.get('http://localhost:3001/role').then(result => setRoles(result.data));
+  console.log('rendenring');
   return (
     <form className='register' onSubmit={submit}>
       <input type='text' required name='name' placeholder='name' />
